@@ -18,7 +18,7 @@ public class Estoque {
     private static quantEstoque = 0;
     
     private int idEstoque;
-    private ArrayList<Integer> estoqueProdutos;
+    private ArrayList<Integer> quantProdutos;
     private ArrayList<Produto> produtos;
 
     /* Construtor */
@@ -26,12 +26,14 @@ public class Estoque {
         quantEstoque++;
         
         this.id = id;
-        this.estoqueProdutos = new ArrayList<Integer>;
+        this.quantProdutos = new ArrayList<Integer>;
         this.produtos = new ArrayList<Produto>; 
     }
     
     /* Metodos */
-    public int addProdutoEstoque(Produto produto){
+    public int addProdutoEstoque(Produto produto){ // retorna o ID do produto nesse Estoque
+        boolean status;
+        
         if(!(this.getProdutos().contains(produto))){
             this.getProdutos().add(produto);
             for(int i : this.getProdutos()){
@@ -39,12 +41,17 @@ public class Estoque {
                     return i;
             }
         }
-        else
-            return -1;
+        else{
+            status = this.addQuantEstoque(1, produto);
+            for(int j : this.getProdutos()){
+                if(this.getProdutos().get(j) == produto)
+                    return j;
+            }
+        }
     }
     public boolean removeProdutoEstoque(Produto produto){
         if(this.estoque.getProdutos().contains(produto)){
-            this.getEstoqueProdutos().get(produto.getId()) = 0;
+            this.getQuantProdutos().get(produto.getId()) = 0;
             this.getProdutos().remove(produto);
             return true;
         }
@@ -54,7 +61,7 @@ public class Estoque {
     
     public boolean addQuantEstoque(int quant, Produto produto){
         if(this.getProdutos.contains(produto)){
-            this.getEstoqueProdutos().get(produto.getId()) += quant;
+            this.getQuantProdutos().get(produto.getId()) += quant;
             return true;
          }
          else
@@ -62,8 +69,8 @@ public class Estoque {
     }
     public boolean removeQuantEstoque(int quant, Produto produto){
         if(this.getProdutos.contains(produto)){
-            if(this.getEstoqueProdutos().get(produto.getId()) >= quant){
-                this.getEstoqueProdutos().get(produto.getId()) -= quant;
+            if(this.getQuantProdutos().get(produto.getId()) >= quant){
+                this.getQuantProdutos().get(produto.getId()) -= quant;
                 return true;
             }
             else
@@ -74,10 +81,10 @@ public class Estoque {
     }
     
     /* Getters e Setters */
-    public ArrayList<Integer> getEstoqueProdutos() {
+    public ArrayList<Integer> getQuantProdutos() {
         return estoqueProdutos;
     }
-    public void setEstoqueProdutos(ArrayList<Integer> estoqueProdutos) {
+    private void setQuantProdutos(ArrayList<Integer> estoqueProdutos) {
         this.estoqueProdutos = estoqueProdutos;
     }
     
