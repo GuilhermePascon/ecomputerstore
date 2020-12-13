@@ -10,18 +10,51 @@
 
 import java.util.ArrayList;
 
-public class Produto {
-    private static ArrayList<Produto> Produtos;
-    private float custo;
-    private int id;
-    private float margemLucro;
-    private String dimensao; // no formato "AxBxCcm"
 
-    public Produto(float custo, int id, float margemLucro, String dimensao) {
-        this.custo = custo;
+/*----- Classe Produto -----*/
+/* Objetivo: */
+/*--------------------------*/
+public class Produto {
+    
+    private static int quantTotalProduto = 0;
+    //private static ArrayList<int> QuantProdutos; // o index no ArrayList corresponde ao ID do Produto, e o valor eh a quantidade
+    
+    private int id;
+    private String descricao;
+    private String dimensao; // no formato "AxBxCcm"
+    private float custo;
+    private float margemLucro;
+
+    /*Contrutor Produto ja Cadastrado*/
+    public Produto(int id, String descricao, String dimensao, float custo, float margemLucro) {
+        
+        quantTotalProduto++;
+        
         this.id = id;
-        this.margemLucro = margemLucro;
+        this.descricao = descricao;
         this.dimensao = dimensao;
+        this.custo = custo;
+        this.margemLucro = margemLucro;
+        
+        Estoque.getProdutos.get(this.id)++; // Incremento a quant do produto na pos do ID
+        
+    }
+    /*Contrutor Novo Cadastro de Produto*/
+    public Produto(String descricao, String dimensao, float custo, float margemLucro) {
+       
+        for(int i : Estoque.getProdutos()){
+            if(descricao == Estoque.getProdutos.get(i).getDescricao)){
+                // rotina que impede a construcao do objeto e sai do construtor
+            }
+        }
+        
+        quantTotalProduto++;
+        
+        this.id = Estoque.getIDNovoProduto();
+        this.descricao = descricao;
+        this.dimensao = dimensao;
+        this.custo = custo;
+        this.margemLucro = margemLucro;       
     }
 
     public static ArrayList<Produto> getProdutos() {
