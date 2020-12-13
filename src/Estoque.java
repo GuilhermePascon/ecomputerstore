@@ -23,42 +23,47 @@ public class Estoque {
 
     /* Construtor */
     public Estoque(int id){
+        quantEstoque++;
+        
         this.id = id;
         this.estoqueProdutos = new ArrayList<Integer>;
         this.produtos = new ArrayList<Produto>; 
     }
     
     /* Metodos */
-    public boolean addProdutoEstoque(Produto produto, Estoque estoque){
-        if(!(estoque.getProdutos().contains(produto))){
-            estoque.getProdutos().add(produto);
-            return true;
+    public int addProdutoEstoque(Produto produto){
+        if(!(this.getProdutos().contains(produto))){
+            this.getProdutos().add(produto);
+            for(int i : this.getProdutos()){
+                if(this.getProdutos().get(i) == produto)
+                    return i;
+            }
         }
         else
-            return false;
+            return -1;
     }
-    public boolean removeProdutoEstoque(Produto produto, Estoque estoque){
-        if(estoque.getProdutos().contains(produto)){
-            estoque.getProdutos().remove(produto);
+    public boolean removeProdutoEstoque(Produto produto){
+        if(this.estoque.getProdutos().contains(produto)){
+            this.getEstoqueProdutos().get(produto.getId()) = 0;
+            this.getProdutos().remove(produto);
             return true;
         }
         else
             return false;
     }
     
-    
-    public boolean addQuantEstoque(int quant, Produto produto, Estoque estoque){
-        if(estoque.getProdutos.contains(produto)){
-            estoque.getEstoqueProdutos().get(produto.getId()) += quant;
+    public boolean addQuantEstoque(int quant, Produto produto){
+        if(this.getProdutos.contains(produto)){
+            this.getEstoqueProdutos().get(produto.getId()) += quant;
             return true;
          }
          else
             return false;
     }
-    public boolean removeQuantEstoque(int quant, Produto produto, Estoque estoque){
-        if(estoque.getProdutos.contains(produto)){
-            if(estoque.getEstoqueProdutos().get(produto.getId()) >= quant){
-                estoque.getEstoqueProdutos().get(produto.getId()) -= quant;
+    public boolean removeQuantEstoque(int quant, Produto produto){
+        if(this.getProdutos.contains(produto)){
+            if(this.getEstoqueProdutos().get(produto.getId()) >= quant){
+                this.getEstoqueProdutos().get(produto.getId()) -= quant;
                 return true;
             }
             else
