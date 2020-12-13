@@ -28,7 +28,7 @@ public class Pedido {
         
         this.cliente = cliente;
         this.carrinho = carrinho;
-        this.custoTotal = carrinho.getCustoTotal();
+        this.custoTotal = this.getCustoTotal();
     }
 
     /* Metodos Estaticos */
