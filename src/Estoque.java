@@ -11,9 +11,17 @@
 import java.util.ArrayList;
 
 public class Estoque {
-    private static ArrayList<Integer> estoqueProdutos;
+    
+    private static quantEstoque = 0;
+    
+    private ArrayList<Integer> estoqueProdutos;
+    private ArrayList<Produto> produtos;
 
-
+    public Estoque(){
+        this.estoqueProdutos = new ArrayList<Integer>;
+        this.produtos = new ArrayList<Produto>; 
+    }
+    
     public static ArrayList<Integer> getEstoqueProdutos() {
         return estoqueProdutos;
     }
