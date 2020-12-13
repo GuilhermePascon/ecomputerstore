@@ -10,58 +10,72 @@
 
 import java.util.ArrayList;
 
+/*----- Classe Pedido -----*/
+/* Objetivo: */
+/*--------------------------*/
 public class Pedido {
-    private static int quantPedidos;
+    private static int quantPedido;
 
     private int id;
     private Cliente cliente;
     private ArrayList<Produto> carrinho;
     private float custoTotal;
 
-    public Pedido(int id, Cliente cliente, ArrayList<Produto> carrinho, float custoTotal) {
-        this.id = id;
+    /* Construtor */
+    public Pedido(Cliente cliente, ArrayList<Produto> carrinho) {
+        quantPedido++;
+        this.id = getQuantPedido();
+        
         this.cliente = cliente;
         this.carrinho = carrinho;
-        this.custoTotal = custoTotal;
+        this.custoTotal = carrinho.getCustoTotal();
     }
 
-    public static int getQuantPedidos() {
-        return quantPedidos;
+    /* Metodos Estaticos */
+    public static int getQuantPedido() {
+        return quantPedido;
+    }
+    private static void setQuantPedido(int quantPedido) {
+        this.quantPedido = quantPedido;
+    }
+    
+    /* Metodos */
+    public float getCustoTotal(){
+        float soma = 0;
+        
+        for(int i : this.getCarrinho()){
+            soma += this.getCarrinho().get(i).getPreco();
+        }
+        
+        return soma;
     }
 
-    public static void setQuantPedidos(int quantPedidos) {
-        Pedido.quantPedidos = quantPedidos;
-    }
-
+    /* Getters e Setters */
     public int getId() {
         return id;
     }
-
-    public void setId(int id) {
+    private void setId(int id) {
         this.id = id;
     }
 
     public Cliente getCliente() {
         return cliente;
     }
-
-    public void setCliente(Cliente cliente) {
+    private void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
     public ArrayList<Produto> getCarrinho() {
         return carrinho;
     }
-
-    public void setCarrinho(ArrayList<Produto> carrinho) {
+    private void setCarrinho(ArrayList<Produto> carrinho) {
         this.carrinho = carrinho;
     }
 
     public float getCustoTotal() {
         return custoTotal;
     }
-
-    public void setCustoTotal(float custoTotal) {
+    private void setCustoTotal(float custoTotal) {
         this.custoTotal = custoTotal;
     }
 }
