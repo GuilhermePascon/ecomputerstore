@@ -17,7 +17,6 @@ import java.util.ArrayList;
 public class Produto {
     
     private static int quantTotalProduto = 0;
-    //private static ArrayList<int> QuantProdutos; // o index no ArrayList corresponde ao ID do Produto, e o valor eh a quantidade
     
     private int id;
     private String descricao;
@@ -27,7 +26,6 @@ public class Produto {
 
     /*Contrutor Produto Avulso*/
     public Produto(String descricao, String dimensao, float custo, float margemLucro) {
-
         quantTotalProduto++;
         
         this.id = -1;
@@ -38,17 +36,16 @@ public class Produto {
     }
     /*Contrutor Novo Cadastro de Produto*/
     public Produto(Estoque estoque, int quant, String descricao, String dimensao, float custo, float margemLucro) {
-       
         int flag = 0;
         boolean status;
         
-        for(int i : estoque.getProdutos()){
+        for(int i : estoque.getProdutos()){ // Checo se ja tem algum produto com a mesma descricao no estoque indicado
             if(descricao == estoque.getProdutos.get(i).getDescricao()){
                 flag++;
             }
         }
         
-        if(flag == 0){
+        if(flag == 0){ // se nao houver, adiciono o novo item no estoque indicado
             quantTotalProduto++;
             
             this.descricao = descricao;
@@ -59,7 +56,7 @@ public class Produto {
             this.id = estoque.addProdutoEstoque(this);
             status = estoque.addQuantEstoque(quant, this);
         }
-        else{
+        else{ // se ja houver, crio o produto mas nao destino ele a algum estoque, portanto nao tem id
             quantTotalProduto++;
             
             this.descricao = descricao;
