@@ -25,51 +25,62 @@ public class Produto {
     private float custo;
     private float margemLucro;
 
-    /*Contrutor Produto ja Cadastrado*/
-    public Produto(int id, String descricao, String dimensao, float custo, float margemLucro) {
-        
+    /*Contrutor Produto Avulso*/
+    public Produto(String descricao, String dimensao, float custo, float margemLucro) {
+
         quantTotalProduto++;
         
-        this.id = id;
+        this.id = -1;
         this.descricao = descricao;
         this.dimensao = dimensao;
         this.custo = custo;
         this.margemLucro = margemLucro;
-        
-        Estoque.getProdutos.get(this.id)++; // Incremento a quant do produto na pos do ID
-        
     }
     /*Contrutor Novo Cadastro de Produto*/
-    public Produto(String descricao, String dimensao, float custo, float margemLucro) {
+    public Produto(Estoque estoque, int quant, String descricao, String dimensao, float custo, float margemLucro) {
        
-        for(int i : Estoque.getProdutos()){
-            if(descricao == Estoque.getProdutos.get(i).getDescricao)){
-                // rotina que impede a construcao do objeto e sai do construtor
+        int flag = 0;
+        boolean status;
+        
+        for(int i : estoque.getProdutos()){
+            if(descricao == estoque.getProdutos.get(i).getDescricao()){
+                flag++;
             }
         }
         
-        quantTotalProduto++;
-        
-        this.id = Estoque.getIDNovoProduto();
-        this.descricao = descricao;
-        this.dimensao = dimensao;
-        this.custo = custo;
-        this.margemLucro = margemLucro;       
+        if(flag == 0){
+            quantTotalProduto++;
+            
+            this.descricao = descricao;
+            this.dimensao = dimensao;
+            this.custo = custo;
+            this.margemLucro = margemLucro;
+            
+            this.id = estoque.addProdutoEstoque(this);
+            status = estoque.addQuantEstoque(quant, this);
+        }
+        else{
+            quantTotalProduto++;
+            
+            this.descricao = descricao;
+            this.dimensao = dimensao;
+            this.custo = custo;
+            this.margemLucro = margemLucro;
+            this.id = -1;
+        }
+    }
+    
+    /* Metodos */
+    public float getPreco() {
+        return custo * margemLucro;
     }
 
-    public static ArrayList<Produto> getProdutos() {
-        return Produtos;
-    }
-
-    public static void setProdutos(ArrayList<Produto> produtos) {
-        Produtos = produtos;
-    }
-
+    /* Getters e Setters*/
     public float getCusto() {
         return custo;
     }
 
-    public void setCusto(float custo) {
+    private void setCusto(float custo) {
         this.custo = custo;
     }
 
@@ -77,7 +88,7 @@ public class Produto {
         return id;
     }
 
-    public void setId(int id) {
+    private void setId(int id) {
         this.id = id;
     }
 
@@ -85,7 +96,7 @@ public class Produto {
         return margemLucro;
     }
 
-    public void setMargemLucro(float margemLucro) {
+    private void setMargemLucro(float margemLucro) {
         this.margemLucro = margemLucro;
     }
 
@@ -93,11 +104,7 @@ public class Produto {
         return dimensao;
     }
 
-    public void setDimensao(String dimensao) {
+    private void setDimensao(String dimensao) {
         this.dimensao = dimensao;
-    }
-
-    public float getPreco() {
-        return custo * margemLucro;
     }
 }
