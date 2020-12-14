@@ -35,16 +35,13 @@ public class Pedido {
     public static int getQuantPedido() {
         return quantPedido;
     }
-    private static void setQuantPedido(int quantPedido) {
-        this.quantPedido = quantPedido;
-    }
     
     /* Metodos */
-    public float getCustoTotal(){
+    public float setCustoTotal() {
         float soma = 0;
         
-        for(int i : this.getCarrinho()){
-            soma += this.getCarrinho().get(i).getPreco();
+        for(Produto p : this.getCarrinho()){
+            soma += p.getPreco();
         }
         
         return soma;

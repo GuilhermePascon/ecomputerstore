@@ -33,10 +33,10 @@ public class Cliente {
 
     /* Metodos Estaticos */
     public static int getQuantCliente() {
-        return quantClient;
+        return quantCliente;
     }
     public static void setQuantClient(int quantCliente) {
-        Cliente.quantClient = quantClient;
+        Cliente.quantCliente = quantCliente;
     }
     
     
