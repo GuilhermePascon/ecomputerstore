@@ -28,7 +28,7 @@ public class Produto {
     public Produto(String descricao, String dimensao, float custo, float margemLucro) {
         quantTotalProduto++;
 
-        this.id = -1;
+        this.id = quantTotalProduto;
         this.descricao = descricao;
         this.dimensao = dimensao;
         this.custo = custo;
@@ -115,5 +115,15 @@ public class Produto {
 
     public static int getQuantTotalProduto() {
         return quantTotalProduto;
+    }
+
+    @Override
+    public String toString() {
+        return "Produto: " +
+                 id +
+                ", descricao='" + descricao + '\'' +
+                ", dimensao='" + dimensao + '\'' +
+                ", custo=" + custo +
+                ", margemLucro=" + margemLucro;
     }
 }

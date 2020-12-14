@@ -36,6 +36,7 @@ public class Estoque {
         
         if (!(this.getProdutos().contains(produto))) {
             this.getProdutos().add(produto);
+            this.getQuantProdutos().add(0);
             for (Produto p : this.getProdutos()){
                 if (p == produto) {
                     return p.getId();
@@ -99,5 +100,12 @@ public class Estoque {
 
     private void setQuantProdutos(int idProduto, int qnt) {
         this.quantProdutos.set(idProduto, qnt);
+    }
+
+    @Override
+    public String toString() {
+        return "Estoque: " + id +
+                "Quantidade de Produtos=" + quantProdutos +
+                "Produtos=" + produtos;
     }
 }

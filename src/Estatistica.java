@@ -14,7 +14,7 @@ public class Estatistica {
     private static float dolar;
 
     /* Métodos */
-    public ArrayList<Integer> maisVendido(ArrayList<Integer> produtos){
+    public static ArrayList<Integer> maisVendido(ArrayList<Integer> produtos) {
         int maisVendidos = -1;
         int pos_mais = - 1;
         ArrayList<Integer> mais_vendidos = new ArrayList<>();

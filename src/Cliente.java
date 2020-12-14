@@ -114,8 +114,9 @@ public class Cliente {
 
     // imprime todos os produtos do carrinho do cliente
     public void verCarrinho() {
-        System.out.println("Esses sao os produtos do seu carrinho");
+        System.out.println("Esses sao os produtos do carrinho de " + this.nome);
         this.carrinho.forEach((p) -> System.out.println(p));
+        System.out.println("\n");
     }
 
     public void esvaziarCarrinho() {
@@ -189,4 +190,24 @@ public class Cliente {
         }
     }
 
+    @Override
+    public String toString() {
+        String out =  "Cliente: " + nome + " " +
+                "  Saldo: " + saldo +
+                "  Id: " + id + "\n";
+
+        out += "Produtos: \n";
+
+        for(Produto p: this.carrinho) {
+            out += p.getDescricao() + "\n";
+        }
+
+        out += "Pedidos: \n";
+
+        for(Pedido p: this.pedidos) {
+            out += "Codigo do Pedido: " + p.getId() + "\n";
+        }
+
+        return out;
+    }
 }
