@@ -14,12 +14,21 @@ public class Estatistica {
     private static float dolar;
 
     /* Métodos */
-    public int maisVendido(ArrayList<Integer> produtos){
-        int qnt_vendas = 0;
-        int maisVendidos;
-        for (int i = 0; i < produtos.size(); i++);
-        // Incompleto (Necessita alinhar com Estoque)
-        return 0;
+    public ArrayList<Integer> maisVendido(ArrayList<Integer> produtos){
+        int maisVendidos = -1;
+        int pos_mais = - 1;
+        ArrayList<Integer> mais_vendidos = new ArrayList<>();
+        for (int i = 0; i < produtos.size(); i++){
+            if (produtos.get(i) > maisVendidos){
+                pos_mais = i;
+                maisVendidos = produtos.get(i);
+            }
+        }
+        for (int i = 0; i < produtos.size(); i++){
+            if (produtos.get(i).equals(produtos.get(pos_mais)))
+                mais_vendidos.add(i);
+        }
+        return mais_vendidos;
     }
 
     public float media(ArrayList<Float> margens){
@@ -39,6 +48,6 @@ public class Estatistica {
     public static void setDolar(float dolar) {
         Estatistica.dolar = dolar;
     }
-
-
+    
+    
 }
