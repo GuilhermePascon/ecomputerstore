@@ -14,7 +14,7 @@ import java.util.ArrayList;
 /* Objetivo: */
 /*--------------------------*/
 public class Pedido {
-    private static int quantPedido;
+    private static int quantPedidos;
 
     private int id;
     private Cliente cliente;
@@ -23,7 +23,7 @@ public class Pedido {
 
     /* Construtor */
     public Pedido(Cliente cliente, ArrayList<Produto> carrinho) {
-        quantPedido++;
+        quantPedidos++;
         this.id = getQuantPedido();
         
         this.cliente = cliente;
@@ -33,7 +33,7 @@ public class Pedido {
 
     /* Metodos Estaticos */
     public static int getQuantPedido() {
-        return quantPedido;
+        return quantPedidos;
     }
     
     /* Metodos */
@@ -74,5 +74,9 @@ public class Pedido {
     }
     private void setCustoTotal(float custoTotal) {
         this.custoTotal = custoTotal;
+    }
+
+    public static void aumentaQuantPedidos() {
+        quantPedidos++;
     }
 }

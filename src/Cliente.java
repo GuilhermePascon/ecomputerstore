@@ -20,15 +20,17 @@ public class Cliente {
     private ArrayList<Produto> carrinho;
     private int id;
     private String nome;
+    private ArrayList<Pedido> pedidos;
 
     /* Construtor */
-    public Cliente(float saldo, ArrayList<Produto> carrinho, String nome) {
+    public Cliente(float saldo, ArrayList<Produto> carrinho, String nome, ArrayList<Pedido> pedidos) {
         quantCliente++;
         this.id = getQuantCliente();
         
         this.saldo = saldo;
         this.carrinho = carrinho;
         this.nome = nome;
+        this.pedidos = pedidos;
     }
 
     /* Metodos Estaticos */
@@ -68,4 +70,123 @@ public class Cliente {
     private void setNome(String nome) {
         this.nome = nome;
     }
+
+    public ArrayList<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(ArrayList<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
+    public String especificarProduto(Produto produto) { // retorna as especificacoes de um produto
+        return produto.toString();
+    }
+
+    // adiciona ao carrinho do cliente a quantidade passada do produto passado
+    public void adicionarAoCarrinho(Produto produto, int qnt) {
+        for (int i = 0; i < qnt; i++) {
+            this.carrinho.add(produto);
+        }
+    }
+
+    // remove do carrinho qnt vezes e imprime quantas vezes foi removido, retorna false se nenum foi removido e true se um ou mais foram removidos
+    public boolean removerDoCarrinho(Produto produto, int qnt) {
+        int qntRemovida = 0;
+        for (int i = 0; i < qnt; i++) {
+            int index = this.carrinho.indexOf(produto);
+            if (index != -1) {
+                this.carrinho.remove(produto);
+                qntRemovida++;
+            }
+        }
+        if (qntRemovida == 0) {
+            System.out.println("O carrinho nao tinha nenhum produto desse tipo para se remover");
+            return false;
+        } else if (qntRemovida == 1){
+            System.out.println("Foi removido um produto desse tipo do carrinho");
+            return true;
+        } else {
+            System.out.println("Foram removidos " + qntRemovida + "  produtos desse tipo do carrinho");
+            return true;
+        }
+    }
+
+    // imprime todos os produtos do carrinho do cliente
+    public void verCarrinho() {
+        System.out.println("Esses sao os produtos do seu carrinho");
+        this.carrinho.forEach((p) -> System.out.println(p));
+    }
+
+    public void esvaziarCarrinho() {
+        this.carrinho.clear();
+    }
+
+    public void adicionarSaldo(Float valor) { // adiciona um valor ao saldo do cliente
+        this.saldo += valor;
+    }
+
+    public boolean removerSaldo(Float valor) {
+        if (this.saldo - valor < 0) {
+            System.out.println("Voce nao tem saldo suficiente para remover o valor de " + valor);
+            return false;
+        } else {
+            this.saldo -= valor;
+            return true;
+        }
+    }
+
+    // adiciona um pedido a lista de pedidos do cliente
+    public void adicionaPedido(Pedido pedido) {
+        this.pedidos.add(pedido);
+    }
+
+    // remove um pedido a lista de pedidos do cliente e retorna true se conseguir e false se nao
+    public boolean removePedido(Pedido pedido) {
+        int index = this.pedidos.indexOf(pedido);
+
+        if (index != -1) {
+            this.pedidos.remove(pedido);
+            return true;
+        }
+
+        return false;
+    }
+
+    // finaliza o pedido do cliente
+    public boolean finalizarCompra() {
+        float precoTotalDoCarrinho = 0;
+        // calcula o preco total do carrinho
+        for (int i = 0; i < this.carrinho.size(); i++) {
+            precoTotalDoCarrinho += this.carrinho.get(i).getPreco();
+        }
+
+        // checa se a pessoa tem saldo suficiente para finalizar o pedido
+        if (this.saldo - precoTotalDoCarrinho < 0) {
+            System.out.println("Cliente nao tem saldo suficiente para finalizar esse pedido");
+            return false;
+        } else {
+            // remove o valor total do carrinho do saldo da pessoa
+            this.removerSaldo(precoTotalDoCarrinho);
+
+            // cria um novo pedido
+            Pedido novoPedido = new Pedido(this, this.carrinho);
+
+            // adiciona o pedido a lista de pedidos geral
+            Comercial.getListaPedidos().add(novoPedido);
+
+            // adiciona o pedido a lista de pedidos da pessoa
+            this.adicionaPedido(novoPedido);
+
+            // esvazia o carrinho
+            this.esvaziarCarrinho();
+
+            // aumenta um no contador de pedidos na classe Pedido
+            Pedido.aumentaQuantPedidos();
+
+            System.out.println("Pedido realizado");
+            return true;
+        }
+    }
+
 }

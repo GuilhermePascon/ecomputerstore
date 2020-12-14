@@ -11,5 +11,9 @@
 import java.util.ArrayList;
 
 public class Comercial {
-    private ArrayList<Pedido> listaPedidos;
+    private static ArrayList<Pedido> listaPedidos;
+
+    public static ArrayList<Pedido> getListaPedidos() {
+        return listaPedidos;
+    }
 }
