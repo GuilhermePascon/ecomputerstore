@@ -8,9 +8,26 @@
 /* Data: dez 2020                      */
 /*-------------------------------------*/
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Financeiro {
     private static float caixaTotal;
 
+
+    /* Métodos */
+    public float mediaMargem(Estoque estoque){
+        Estatistica st = new Estatistica();
+        ArrayList<Float> margens = new ArrayList<Float>();
+        ArrayList<Produto> p = new ArrayList<Produto>();
+        p = estoque.getProdutos();
+        for (int i = 0; i < p.size(); i++){
+            margens.add(p.get(i).getMargemLucro());
+        }
+        return st.media(margens);
+    }
+
+    /* Getter e Setter */
     public static float getCaixaTotal() {
         return caixaTotal;
     }
