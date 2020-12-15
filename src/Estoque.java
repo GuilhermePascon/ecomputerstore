@@ -49,9 +49,6 @@ public class Estoque {
                     return p.getId();
             }
         }
-
-        // nao deve nunca chegar a esse ponto
-        return -1;
     }
     
     public boolean addQuantEstoque(int quant, Produto produto){
