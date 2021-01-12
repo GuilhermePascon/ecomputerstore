@@ -10,16 +10,16 @@
 
 import java.util.ArrayList;
 
-public class Notebook extends Produto{
+public class Desktop extends Produto {
 
     private ArrayList<PecasEnum> listaPecas;
 
-    public Notebook(ArrayList<PecasEnum> listaPecas, String descricao, String dimensao, float custo, float margemLucro) {
+    public Desktop(ArrayList<PecasEnum> listaPecas, String descricao, String dimensao, float custo, float margemLucro) {
         super(descricao, dimensao, custo, margemLucro);
         this.listaPecas = listaPecas;
     }
 
-    public Notebook(Estoque estoque, int quant, String descricao, String dimensao, float custo, float margemLucro) {
+    public Desktop(Estoque estoque, int quant, String descricao, String dimensao, float custo, float margemLucro) {
         super(estoque, quant, descricao, dimensao, custo, margemLucro);
     }
 
@@ -34,7 +34,7 @@ public class Notebook extends Produto{
     @Override
     public String toString() {
         return super.toString() +
-                "Notebook{" +
+                "Desktop{" +
                 "listaPecas=" + listaPecas +
                 '}';
     }

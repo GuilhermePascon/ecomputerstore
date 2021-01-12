@@ -14,7 +14,7 @@ import java.util.ArrayList;
 /*----- Classe Produto -----*/
 /* Objetivo: */
 /*--------------------------*/
-public class Produto {
+abstract class Produto {
 
     private static int quantTotalProduto = 0;
 
@@ -34,8 +34,9 @@ public class Produto {
         this.custo = custo;
         this.margemLucro = margemLucro;
     }
+
     /*Contrutor Novo Cadastro de Produto*/
-    public Produto (Estoque estoque, int quant, String descricao, String dimensao, float custo, float margemLucro) {
+    public Produto(Estoque estoque, int quant, String descricao, String dimensao, float custo, float margemLucro) {
         int flag = 0;
         boolean status;
 
