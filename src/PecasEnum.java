@@ -8,7 +8,7 @@
 /* Data: dez 2020                      */
 /*-------------------------------------*/
 
-public enum Pecas {
+public enum PecasEnum {
     intelI7 ("Processador", "4.4Ghz"),
     intelI5 ("Processador", "3.6Ghz"),
     GTX1050 ("Placa de Video", "4G"),
@@ -19,7 +19,7 @@ public enum Pecas {
     private String tipo;
     private String spec;
 
-    Pecas(String tipo, String spec) {
+    PecasEnum(String tipo, String spec) {
         this.tipo = tipo;
         this.spec = spec;
     }

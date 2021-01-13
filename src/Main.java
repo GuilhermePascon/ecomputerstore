@@ -15,9 +15,9 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Criando Produtos *****************************************************************\n");
 
-        Produto placaDeVideo = new Produto("Placa de Video", "15x10x3cm", 1230.99f, 30.0f);
-        Produto processador = new Produto("Processador", "5x5x0.3cm", 999.99f, 40.0f);
-        Produto cooler = new Produto("Cooler", "15x15x5cm", 150.99f, 20.0f);
+        Produto placaDeVideo = new Peca("Placa de Video", "15x10x3cm", 1230.99f, 30.0f);
+        Produto processador = new Peca("Processador", "5x5x0.3cm", 999.99f, 40.0f);
+        Produto cooler = new Peca("Cooler", "15x15x5cm", 150.99f, 20.0f);
 
         System.out.println("Imprimindo Produtos: *****************************************************************\n");
 

@@ -11,10 +11,9 @@
 import java.util.ArrayList;
 
 public class Estatistica {
-    private static float dolar;
 
     /* Métodos */
-    public static ArrayList<Integer> maisVendido(ArrayList<Integer> produtos) {
+    static ArrayList<Integer> maisVendido(ArrayList<Integer> produtos) {
         int maisVendidos = -1;
         int pos_mais = - 1;
         ArrayList<Integer> mais_vendidos = new ArrayList<>();
@@ -31,7 +30,7 @@ public class Estatistica {
         return mais_vendidos;
     }
 
-    public float media(ArrayList<Float> margens){
+    static float media(ArrayList<Float> margens){
         float soma = 0;
         int qnt = 0;
         for (int i = 0; i < margens.size(); i++){
@@ -40,14 +39,4 @@ public class Estatistica {
         }
             return soma/qnt;
     }
-    /* Getters e Setters */
-    public static float getDolar() {
-        return dolar;
-    }
-
-    public static void setDolar(float dolar) {
-        Estatistica.dolar = dolar;
-    }
-    
-    
 }
