@@ -28,7 +28,8 @@ public class Pedido {
         
         this.cliente = cliente;
         this.carrinho = carrinho;
-        this.custoTotal = this.getCustoTotal();
+        this.custoTotal = this.setCustoTotal();
+        System.out.println(this.custoTotal);
     }
 
     /* Metodos Estaticos */

@@ -18,6 +18,16 @@ public class Main {
         Produto placaDeVideo = new Peca("Placa de Video", "15x10x3cm", 1230.99f, 30.0f);
         Produto processador = new Peca("Processador", "5x5x0.3cm", 999.99f, 40.0f);
         Produto cooler = new Peca("Cooler", "15x15x5cm", 150.99f, 20.0f);
+        Produto cooler1 = new Peca("Cooler", "15x15x5cm", 150.99f, 20.0f);
+        Produto cooler2 = new Peca("Cooler", "15x15x5cm", 150.99f, 20.0f);
+        Produto cooler3 = new Peca("Cooler", "15x15x5cm", 150.99f, 20.0f);
+        Produto cooler4 = new Peca("Cooler", "15x15x5cm", 150.99f, 20.0f);
+        Produto cooler5 = new Peca("Cooler", "15x15x5cm", 150.99f, 20.0f);
+        Produto cooler6 = new Peca("Cooler", "15x15x5cm", 150.99f, 20.0f);
+        Produto cooler7 = new Peca("Cooler", "15x15x5cm", 150.99f, 20.0f);
+        Produto cooler8 = new Peca("Cooler", "15x15x5cm", 150.99f, 20.0f);
+        Produto cooler9 = new Peca("Cooler", "15x15x5cm", 150.99f, 20.0f);
+
 
         System.out.println("Imprimindo Produtos: *****************************************************************\n");
 
@@ -94,13 +104,24 @@ public class Main {
         System.out.println("Finalizando a compra de Maria: *****************************************************************\n");
         System.out.println("Sera removido o saldo equivalente ao valor da compra, criado um pedido e esvaziado seu carrinho: *****************************************************************\n");
 
-        maria.finalizarCompra();
+//        maria.finalizarCompra();
         System.out.println(maria);
 
 
         System.out.println("Finalizando a compra de Jose: *****************************************************************\n");
 
-        jose.finalizarCompra();
+//        jose.finalizarCompra();
         System.out.println(jose);
+
+        Estoque estoque = new Estoque(1);
+        estoque.addProdutoEstoque(placaDeVideo);
+        estoque.addProdutoEstoque(processador);
+        estoque.addProdutoEstoque(cooler);
+        estoque.addProdutoEstoque(cooler2);
+        estoque.addProdutoEstoque(cooler3);
+
+
+
+        new JanelaCadastro(estoque);
     }
 }

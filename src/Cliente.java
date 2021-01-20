@@ -155,12 +155,9 @@ public class Cliente {
     }
 
     // finaliza o pedido do cliente
-    public boolean finalizarCompra() {
-        float precoTotalDoCarrinho = 0;
-        // calcula o preco total do carrinho
-        for (int i = 0; i < this.carrinho.size(); i++) {
-            precoTotalDoCarrinho += this.carrinho.get(i).getPreco();
-        }
+    public boolean finalizarCompra(Pedido novoPedido) {
+        float precoTotalDoCarrinho = novoPedido.getCustoTotal();
+        System.out.println(precoTotalDoCarrinho);
 
         // checa se a pessoa tem saldo suficiente para finalizar o pedido
         if (this.saldo - precoTotalDoCarrinho < 0) {
@@ -170,20 +167,11 @@ public class Cliente {
             // remove o valor total do carrinho do saldo da pessoa
             this.removerSaldo(precoTotalDoCarrinho);
 
-            // cria um novo pedido
-            Pedido novoPedido = new Pedido(this, this.carrinho);
-
             // adiciona o pedido a lista de pedidos geral
             Comercial.getListaPedidos().add(novoPedido);
 
-            // adiciona o pedido a lista de pedidos da pessoa
-            this.adicionaPedido(novoPedido);
-
             // esvazia o carrinho
             this.esvaziarCarrinho();
-
-            // aumenta um no contador de pedidos na classe Pedido
-            Pedido.aumentaQuantPedidos();
 
             System.out.println("Pedido realizado");
             return true;
@@ -205,7 +193,7 @@ public class Cliente {
         out += "Pedidos: \n";
 
         for(Pedido p: this.pedidos) {
-            out += "Codigo do Pedido: " + p.getId() + "\n";
+            out += "Pedido de Codigo Numero: " + p.getId() + "\n";
         }
 
         return out;
