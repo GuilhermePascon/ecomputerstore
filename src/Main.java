@@ -18,16 +18,9 @@ public class Main {
         Produto placaDeVideo = new Peca("Placa de Video", "15x10x3cm", 1230.99f, 30.0f);
         Produto processador = new Peca("Processador", "5x5x0.3cm", 999.99f, 40.0f);
         Produto cooler = new Peca("Cooler", "15x15x5cm", 150.99f, 20.0f);
-        Produto cooler1 = new Peca("Cooler", "15x15x5cm", 150.99f, 20.0f);
-        Produto cooler2 = new Peca("Cooler", "15x15x5cm", 150.99f, 20.0f);
-        Produto cooler3 = new Peca("Cooler", "15x15x5cm", 150.99f, 20.0f);
-        Produto cooler4 = new Peca("Cooler", "15x15x5cm", 150.99f, 20.0f);
-        Produto cooler5 = new Peca("Cooler", "15x15x5cm", 150.99f, 20.0f);
-        Produto cooler6 = new Peca("Cooler", "15x15x5cm", 150.99f, 20.0f);
-        Produto cooler7 = new Peca("Cooler", "15x15x5cm", 150.99f, 20.0f);
-        Produto cooler8 = new Peca("Cooler", "15x15x5cm", 150.99f, 20.0f);
-        Produto cooler9 = new Peca("Cooler", "15x15x5cm", 150.99f, 20.0f);
-
+        Produto cooler1 = new Peca("SSD", "15x15x5cm", 150.99f, 20.0f);
+        Produto cooler2 = new Peca("Gabinete", "15x15x5cm", 150.99f, 20.0f);
+        Produto cooler3 = new Peca("Pasta Termica", "15x15x5cm", 150.99f, 20.0f);
 
         System.out.println("Imprimindo Produtos: *****************************************************************\n");
 
