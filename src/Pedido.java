@@ -20,16 +20,17 @@ public class Pedido {
     private Cliente cliente;
     private ArrayList<Produto> carrinho;
     private float custoTotal;
+    private boolean pedidoFinalizado;
 
     /* Construtor */
     public Pedido(Cliente cliente, ArrayList<Produto> carrinho) {
         quantPedidos++;
         this.id = getQuantPedido();
         
+        this.pedidoFinalizado = false;
         this.cliente = cliente;
         this.carrinho = carrinho;
         this.custoTotal = this.setCustoTotal();
-        System.out.println(this.custoTotal);
     }
 
     /* Metodos Estaticos */
@@ -79,5 +80,12 @@ public class Pedido {
 
     public static void aumentaQuantPedidos() {
         quantPedidos++;
+    }
+    
+    public boolean getPedidoFinalizado() {
+        return pedidoFinalizado;
+    }
+    private boolean setPedidoFinalizado(boolean status) {
+        this.pedidoFinalizado = status;
     }
 }
