@@ -86,6 +86,8 @@ public class Estoque {
     
     public void relatorioEstoque(String filename) {
 
+        int i;
+
         System.out.println("Flag1");
 
         try {
@@ -95,8 +97,8 @@ public class Estoque {
             outEstoque.format("Data do Relatório: %s\n", formattedDate.format(relatCreateDate.getTime()));
             System.out.println("Flag3");
 
-            for (Produto p : this.getProdutos()) {
-                outEstoque.format("%d %s %d\n", p.getId(), p.getDescricao(), getQuantProdutos().get(p.getId()));
+            for (i=0; i < this.getProdutos().size(); i++) { // Produto p : this.getProdutos()
+                outEstoque.format("%d %s %d\n", getProdutos().get(i).getId(), getProdutos().get(i).getDescricao(), getQuantProdutos().get(getProdutos().get(i).getId()));
                 System.out.println("Flag4");
             }
 
