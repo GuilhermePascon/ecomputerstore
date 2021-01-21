@@ -74,7 +74,7 @@ public class Pedido {
     public float getCustoTotal() {
         return custoTotal;
     }
-    private void setCustoTotal(float custoTotal) {
+    private void setCustoT(float custoTotal) {
         this.custoTotal = custoTotal;
     }
 
