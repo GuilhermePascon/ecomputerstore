@@ -14,6 +14,10 @@ public class Notebook extends Produto{
 
     private ArrayList<PecasEnum> listaPecas;
 
+    public Notebook(String descricao, String dimensao, float custo, float margemLucro) {
+        super(descricao, dimensao, custo, margemLucro);
+    }
+    
     public Notebook(ArrayList<PecasEnum> listaPecas, String descricao, String dimensao, float custo, float margemLucro) {
         super(descricao, dimensao, custo, margemLucro);
         this.listaPecas = listaPecas;
