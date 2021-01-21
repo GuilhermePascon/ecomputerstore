@@ -113,7 +113,7 @@ public class Main {
         estoque.addProdutoEstoque(cooler2);
         estoque.addProdutoEstoque(cooler3);
 
-
+        estoque.relatorioEstoque("relatorio.txt");
 
         new JanelaCadastro(estoque);
     }
