@@ -17,4 +17,7 @@ public class Comercial {
     public static ArrayList<Pedido> getListaPedidos() {
         return listaPedidos;
     }
+    
+    public void finalizarPedido(Pedido p){
+        if(get)
 }
