@@ -85,29 +85,21 @@ public class Estoque {
     }
     
     public void relatorioEstoque(String filename) {
-
         int i;
-
-        System.out.println("Flag1");
-
         try {
-            System.out.println("Flag2");
             SimpleDateFormat formattedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             Formatter outEstoque = new Formatter(filename);
             outEstoque.format("Data do Relatório: %s\n", formattedDate.format(relatCreateDate.getTime()));
-            System.out.println("Flag3");
 
-            for (i=0; i < this.getProdutos().size(); i++) { // Produto p : this.getProdutos()
-                outEstoque.format("%d %s %d\n", getProdutos().get(i).getId(), getProdutos().get(i).getDescricao(), getQuantProdutos().get(getProdutos().get(i).getId()));
-                System.out.println("Flag4");
+            for (i=0; i < this.getProdutos().size(); i++) { // Produto p : this.getProdutos()1
+//                outEstoque.format("%d %s %d\n", getProdutos().get(i).getId(), getProdutos().get(i).getDescricao(), getQuantProdutos().get(getProdutos().get(i).getId()));
+                outEstoque.format("%d %s\n", getProdutos().get(i).getId(), getProdutos().get(i).getDescricao());
             }
 
             outEstoque.flush();
-            System.out.println("Flag6");
 
         } catch(IOException ex){
             ex.printStackTrace();
-            System.out.println("Flag7");
         }
     }
     

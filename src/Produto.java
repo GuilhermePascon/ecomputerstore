@@ -21,8 +21,8 @@ abstract class Produto {
     private int id;
     private String descricao;
     private String dimensao; // no formato "AxBxCcm"
-    private float custo;
-    private float margemLucro;
+    protected float custo;
+    protected float margemLucro;
 
     /*Contrutor Produto Avulso*/
     public Produto(String descricao, String dimensao, float custo, float margemLucro) {
@@ -121,7 +121,7 @@ abstract class Produto {
     @Override
     public String toString() {
         return "Produto: " +
-                 id +
+                id +
                 ", descricao='" + descricao + '\'' +
                 ", dimensao='" + dimensao + '\'' +
                 ", custo=" + custo +

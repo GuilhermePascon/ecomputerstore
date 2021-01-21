@@ -21,6 +21,9 @@ public class Main {
         Produto cooler1 = new Peca("SSD", "15x15x5cm", 150.99f, 20.0f);
         Produto cooler2 = new Peca("Gabinete", "15x15x5cm", 150.99f, 20.0f);
         Produto cooler3 = new Peca("Pasta Termica", "15x15x5cm", 150.99f, 20.0f);
+        Produto cooler4 = new Peca("Mouse", "15x15x5cm", 150.99f, 20.0f);
+        Produto cooler5 = new Peca("Teclado", "15x15x5cm", 150.99f, 20.0f);
+        Produto cooler6 = new Peca("Monitor Ultrawide", "15x15x5cm", 150.99f, 20.0f);
 
         System.out.println("Imprimindo Produtos: *****************************************************************\n");
 
@@ -94,24 +97,16 @@ public class Main {
         carlos.removerDoCarrinho(cooler, 3);
         carlos.verCarrinho();
 
-        System.out.println("Finalizando a compra de Maria: *****************************************************************\n");
-        System.out.println("Sera removido o saldo equivalente ao valor da compra, criado um pedido e esvaziado seu carrinho: *****************************************************************\n");
-
-//        maria.finalizarCompra();
-        System.out.println(maria);
-
-
-        System.out.println("Finalizando a compra de Jose: *****************************************************************\n");
-
-//        jose.finalizarCompra();
-        System.out.println(jose);
-
         Estoque estoque = new Estoque(1);
         estoque.addProdutoEstoque(placaDeVideo);
         estoque.addProdutoEstoque(processador);
         estoque.addProdutoEstoque(cooler);
         estoque.addProdutoEstoque(cooler2);
         estoque.addProdutoEstoque(cooler3);
+        estoque.addProdutoEstoque(cooler4);
+        estoque.addProdutoEstoque(cooler5);
+        estoque.addProdutoEstoque(cooler6);
+
 
         estoque.relatorioEstoque("relatorio.txt");
 

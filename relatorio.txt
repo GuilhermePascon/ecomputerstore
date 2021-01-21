@@ -1,0 +1,9 @@
+Data do Relatório: 21/01/2021 19:35:16
+1 Placa de Video
+2 Processador
+3 Cooler
+5 Gabinete
+6 Pasta Termica
+7 Mouse
+8 Teclado
+9 Monitor Ultrawide
