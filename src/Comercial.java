@@ -19,5 +19,8 @@ public class Comercial {
     }
     
     public void finalizarPedido(Pedido p){
-        if(get)
+        if(!p.getPedidoFinalizado())
+            p.setPedidoFinalizado(true);
+    }
+
 }
