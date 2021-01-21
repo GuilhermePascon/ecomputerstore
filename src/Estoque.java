@@ -8,7 +8,13 @@
 /* Data: dez 2020                      */
 /*-------------------------------------*/
 
+import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Formatter;
+import java.io.IOException;
+import java.util.GregorianCalendar;
+import java.util.Scanner;
 
 /*----- Classe Estoque -----*/
 /* Objetivo: */
@@ -20,6 +26,8 @@ public class Estoque {
     private int id;
     private ArrayList<Integer> quantProdutos;
     private ArrayList<Produto> produtos;
+    
+    private GregorianCalendar relatCreateDate;
 
     /* Construtor */
     public Estoque(int id) {
@@ -28,6 +36,7 @@ public class Estoque {
         this.id = id;
         this.quantProdutos = new ArrayList<Integer>();
         this.produtos = new ArrayList<Produto>();
+        relatCreateDate = new GregorianCalendar();
     }
     
     /* Metodos */
@@ -73,6 +82,46 @@ public class Estoque {
         }
         else
             return false;
+    }
+    
+    public void relatorioEstoque(String filename) {
+
+        System.out.println("Flag1");
+
+        try {
+            System.out.println("Flag2");
+            SimpleDateFormat formattedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            Formatter outEstoque = new Formatter(filename);
+            outEstoque.format("Data do Relatório: %s\n", formattedDate.format(relatCreateDate.getTime()));
+            System.out.println("Flag3");
+
+            for (Produto p : this.getProdutos()) {
+                outEstoque.format("%d %s %d\n", p.getId(), p.getDescricao(), getQuantProdutos().get(p.getId()));
+                System.out.println("Flag4");
+            }
+
+            outEstoque.flush();
+            System.out.println("Flag6");
+
+        } catch(IOException ex){
+            ex.printStackTrace();
+            System.out.println("Flag7");
+        }
+    }
+    
+    public void carregarEstoque(String filename){
+        
+        try{
+            Scanner input = new Scanner(new File(filename));
+            System.out.println("Lendo Arquivo de Estoque\n");
+
+            while(input.hasNext()){
+                this.addProdutoEstoque(new Peca(input.next(), input.next(), input.nextFloat(), input.nextFloat()));
+            }
+
+        } catch (IOException ex){
+            ex.printStackTrace();
+        }
     }
     
     /* Getters e Setters */
