@@ -85,7 +85,7 @@ public class Pedido {
     public boolean getPedidoFinalizado() {
         return pedidoFinalizado;
     }
-    private boolean setPedidoFinalizado(boolean status) {
+    public void setPedidoFinalizado(boolean status) {
         this.pedidoFinalizado = status;
     }
 }
