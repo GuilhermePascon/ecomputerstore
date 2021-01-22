@@ -11,8 +11,6 @@
 import java.util.ArrayList;
 
 /*----- Classe Cliente -----*/
-/* Objetivo: */
-/*--------------------------*/
 public class Cliente {
     private static int quantCliente = 0;
     

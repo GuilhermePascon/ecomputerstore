@@ -11,8 +11,7 @@
 import java.util.ArrayList;
 
 /*----- Classe Pedido -----*/
-/* Objetivo: */
-/*--------------------------*/
+
 public class Pedido {
     private static int quantPedidos;
 

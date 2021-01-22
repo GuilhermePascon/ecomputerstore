@@ -17,8 +17,7 @@ import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 /*----- Classe Estoque -----*/
-/* Objetivo: */
-/*--------------------------*/
+
 public class Estoque {
 
     private static int quantEstoque = 0;
