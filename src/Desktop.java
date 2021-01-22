@@ -14,6 +14,7 @@ public class Desktop extends Produto {
 
     private ArrayList<PecasEnum> listaPecas;
     private float valorfrete;
+    
     public Desktop(ArrayList<PecasEnum> listaPecas, String descricao, String dimensao, float custo, float margemLucro, float valorfrete) {
         super(descricao, dimensao, custo, margemLucro);
         this.listaPecas = listaPecas;
