@@ -97,14 +97,21 @@ public class Estoque {
 
             outEstoque.flush();
 
-        } catch(IOException ex){
-            ex.printStackTrace();
+        } catch (IOException ex){
+            try {
+                Exception exx;
+                exx = new ValidationException("Não foi possível gerar o Relatório");
+            }
+            catch (Exception exx)
+            {
+                ex.printStackTrace();
+            }
         }
     }
     
     public void carregarEstoque(String filename){
-        
-        try{
+        try
+        {
             Scanner input = new Scanner(new File(filename));
             System.out.println("Lendo Arquivo de Estoque\n");
 
@@ -113,7 +120,14 @@ public class Estoque {
             }
 
         } catch (IOException ex){
-            ex.printStackTrace();
+            try {
+                Exception exx;
+                exx = new ValidationException("Não foi possível carregar o Estoque");
+            }
+            catch (Exception exx)
+            {
+                ex.printStackTrace();
+            }
         }
     }
     
